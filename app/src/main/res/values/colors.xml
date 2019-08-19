@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="fanta">#D81B60</color>
+    <color name="pinky">#FCADAD</color>
+    <color name="birumuda">#c6c6fd</color>
+    <color name="coral">#FFFF8080</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ping">#C9FF639E</color>
+    <color name="pinggelap">#DC14</color>
+    <color name="tomato">#FF6347</color>
+    <color name="ijotpr">#c6c6fd60</color>
+    <color name="ijobgstrans">#c6c6</color>
+    <color name="kuningtrans">#AAFFFF50</color>
+    <color name="kuningmudatrans">#AAFFFF80</color>
+    <color name="kuning">#FFFFFF99</color>
+    <color name="birutrans">#D81B6070</color>
+    <color name="merah">#D81600</color>
+    <color name="ungutrp">#D815</color>
+    <color name="ungumudatrp">#D816</color>
+    <color name="ijo">#27ae60</color>
+    <color name="pinkluv">#D8164d</color>
+    <color name="biruzz">#D8164d80</color>
+    <color name="birulg">#D8164d80</color>
+    <color name="lavender">#FFCC99FF</color>
+    <color name="lightgreen">#FFCCFFCC</color>
+    <color name="aqua">#FF33CCCC</color>
+    <color name="periwinkle">#FF9999FF</color>
+    <color name="ivory">#FFFFFFCC</color>
+    <color name="darkred">#FF800000</color>
+    <color name="paleblue">#FF99CCFF</color>
+  >
+
+</resources>
+

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ENJOYJAKARTE</string>
+    <string name="title_activity_wisatamakanan">Map</string>
+    <string name="title_activity_wisata_air">Map</string>
+    <string name="title_activity_wisatakuliner">Map</string>
+    <string name="title_activity_wisata_belanja">Map</string>
+    <string name="title_activity_wisata_edukasi">Map</string>
+</resources>
