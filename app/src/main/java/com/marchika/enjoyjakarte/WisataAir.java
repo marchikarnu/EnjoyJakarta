@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,6 +17,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.smarteist.autoimageslider.DefaultSliderView;
+import com.smarteist.autoimageslider.SliderLayout;
+import com.smarteist.autoimageslider.SliderView;
 
 public class WisataAir extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener  {
 
@@ -31,8 +33,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
     private Marker nC2;
     private Marker nC3;
     private Marker nC4;
-
-
+    private SliderLayout imageSlider;
 
 
     @Override
@@ -45,7 +46,61 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
         mapFragment.getMapAsync(this);
     }
 
+    private void setSliderView(String title){
+        for (int i = 0; i <= 1; i++) {
 
+            DefaultSliderView sliderView = new DefaultSliderView(this);
+
+            switch (title){
+                case "The Wave Park": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.thewavepark);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.thewave);
+                        break;
+                }
+                break;
+                case "Waterboom Jakarta": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.pik);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.pik1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.pik2);
+                        break;
+                    case 3:
+                        sliderView.setImageDrawable(R.drawable.pik3);
+                        break;
+
+                }
+                    break;
+                case "Atlantis Ancol": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.atlantis1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.atlantis);
+                        break;
+                }
+                break;
+                case "Snowbay": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.snowbay1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.snowbay);
+                        break;
+                }
+            }
+
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageSlider.addSliderView(sliderView);
+
+        }
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -99,10 +154,10 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
         nC4.setTag(R.drawable.thewavepark);
 
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//        // Add a marker in Sydney and move the camera
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         mMap.addMarker(new MarkerOptions().position(C1).title("cika"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(C1,14));
@@ -138,22 +193,17 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisataair, null);
+        imageSlider = view.findViewById(R.id.airSlider);
 
         TextView txtTitle = view.findViewById(R.id.t);
         txtTitle.setText(title);
-
         TextView txtLoc = view.findViewById(R.id.tx);
         txtLoc.setText(location);
 
-        ImageView img = view.findViewById(R.id.iu);
-        img.setImageDrawable(getDrawable(drawable));
-        ImageView img1 = view.findViewById(R.id.imu);
-        img1.setImageDrawable(getDrawable(drawable));
-        ImageView img2 = view.findViewById(R.id.ab);
-        img2.setImageDrawable(getDrawable(drawable));
+        setSliderView(title);
+
 
         builder.setView(view);
-
         // add a button
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

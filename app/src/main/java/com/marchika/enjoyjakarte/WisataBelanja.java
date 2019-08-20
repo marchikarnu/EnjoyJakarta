@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,6 +17,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.smarteist.autoimageslider.DefaultSliderView;
+import com.smarteist.autoimageslider.SliderLayout;
 
 public class WisataBelanja extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
@@ -36,6 +37,8 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
     private Marker nT4;
     private Marker nT5;
     private Marker nT6;
+    private SliderLayout imageSlider;
+
 
 
     @Override
@@ -48,6 +51,70 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
+    private void setSliderView(String title){
+        for (int i = 0; i <= 1; i++) {
+
+            DefaultSliderView sliderView = new DefaultSliderView(this);
+
+            switch (title){
+                case "Kota Kosablanka": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.kokas);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.kokas);
+                        break;
+                }
+                    break;
+                case "Grand Indonesia": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.gi2);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.gi4);
+                        break;
+                }
+                    break;
+                case "Pejaten Village": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.pv);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.pv);
+                        break;
+                }
+                    break;
+                case "Thamrin City": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.thamrincity1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.thamrincity1);
+                        break;
+                }
+                case "Pusat Grosir Cililitan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.pgc);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.pgc);
+                        break;
+                }
+                case "Pasar Tanah Abang": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.tnhabang2);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.tnhabang2);
+                        break;
+                }
+            }
+
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageSlider.addSliderView(sliderView);
+
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -141,6 +208,7 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisatabelanja, null);
+        imageSlider = view.findViewById(R.id.belanjaSlider);
 
         TextView txtTitle = view.findViewById(R.id.txtTitleMb);
         txtTitle.setText(title);
@@ -148,12 +216,7 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         TextView txtLoc = view.findViewById(R.id.txtLocMb);
         txtLoc.setText(location);
 
-        ImageView img3 = view.findViewById(R.id.imgMb);
-        img3.setImageDrawable(getDrawable(drawable));
-        ImageView img4 = view.findViewById(R.id.imMb);
-        img4.setImageDrawable(getDrawable(drawable));
-        ImageView img5 = view.findViewById(R.id.iMb);
-        img5.setImageDrawable(getDrawable(drawable));
+        setSliderView(title);
 
         builder.setView(view);
 

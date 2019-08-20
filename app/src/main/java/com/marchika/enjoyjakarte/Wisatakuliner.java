@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,6 +20,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.marchika.enjoyjakarte.DBHelper.DBHelper;
 import com.marchika.enjoyjakarte.DBHelper.Kuliner;
+import com.smarteist.autoimageslider.DefaultSliderView;
+import com.smarteist.autoimageslider.SliderLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
     private Marker nL4;
     private Marker nL5;
     private Marker nL6;
+    private SliderLayout imageSlider;
     private List<Kuliner> listKuliner;
     private DBHelper db;
     private TextView harga;
@@ -61,7 +63,94 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         harga = findViewById(R.id.harga);
     }
 
+    private void setSliderView(String title){
+        for (int i = 0; i <= 1; i++) {
 
+            DefaultSliderView sliderView = new DefaultSliderView(this);
+
+            switch (title){
+                case "Bandar Djakarta Ancol": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.bandarjktfood);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.bandarjkt);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.bandarjkt1);
+                        break;
+                    case 3:
+                        sliderView.setImageDrawable(R.drawable.bandarjktprice);
+                        break;
+                }
+                    break;
+                case "Bubur Ayam Barito": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.buburab);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.buburab1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.buburabplace);
+                        break;
+                    case 3:
+                        sliderView.setImageDrawable(R.drawable.buburabprice);
+                        break;
+                }
+                    break;
+                case "Nasi Goreng Kambing Kebon Sirih": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.ngkks);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.ngkks1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.ngkksplace);
+                        break;
+                }
+                    break;
+                case "Gulai Tikungan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.gultik);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.gultik1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.gultikplace);
+                        break;
+                }
+                case "Indomie Goreng Abang Adek": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.miead);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.miead1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.mieadplace);
+                        break;
+                }
+                case "Sate Taichan Senayan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.taican);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.taican1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.taicanplace1);
+                        break;
+                }
+            }
+
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageSlider.addSliderView(sliderView);
+
+        }
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -226,23 +315,18 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisatakuliner, null);
+        imageSlider = view.findViewById(R.id.kulinerSlider);
 
         TextView txtTitle = view.findViewById(R.id.txtTitle);
         txtTitle.setText(title);
 
         TextView txtLoc = view.findViewById(R.id.txtLoc);
         txtLoc.setText(location);
+        setSliderView(title);
+
 
         TextView txtHarga = view.findViewById(R.id.harga);
 
-        ImageView img9 = view.findViewById(R.id.img);
-        img9.setImageDrawable(getDrawable(drawable));
-
-        ImageView img10 = view.findViewById(R.id.im);
-        img10.setImageDrawable(getDrawable(drawable));
-
-        ImageView img11 = view.findViewById(R.id.i);
-        img11.setImageDrawable(getDrawable(drawable));
 
         builder.setView(view);
 

@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,6 +17,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.smarteist.autoimageslider.DefaultSliderView;
+import com.smarteist.autoimageslider.SliderLayout;
+import com.smarteist.autoimageslider.SliderView;
 
 public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
@@ -36,6 +38,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
     private Marker nP4;
     private Marker nP5;
     private Marker nP6;
+    private SliderLayout imageSlider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,71 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
+    private void setSliderView(String title){
+        for (int i = 0; i <= 1; i++) {
+
+            DefaultSliderView sliderView = new DefaultSliderView(this);
+
+            switch (title){
+                case "Dunia Fantasi": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.dufan);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.dufan);
+                        break;
+                }
+                    break;
+                case "Planetarium": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                }
+                    break;
+                case "Kebun Binatang Ragunan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                }
+                    break;
+                case "Monumen Nasional": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.monasni);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.bgmonas);
+                        break;
+                }
+                case "Masjid Istiqlal": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                }
+                case "Seaworld Ancol": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.monasni);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.monas);
+                        break;
+                }
+
+            }
+
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageSlider.addSliderView(sliderView);
+
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -164,6 +232,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisataedukasi, null);
+        imageSlider = view.findViewById(R.id.edukasiSlider);
 
         TextView txtTitle = view.findViewById(R.id.tu);
         txtTitle.setText(title);
@@ -171,12 +240,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         TextView txtLoc = view.findViewById(R.id.oc);
         txtLoc.setText(location);
 
-        ImageView img6 = view.findViewById(R.id.ai);
-        img6.setImageDrawable(getDrawable(drawable));
-        ImageView img7 = view.findViewById(R.id.ib);
-        img7.setImageDrawable(getDrawable(drawable));
-        ImageView img8 = view.findViewById(R.id.ij);
-        img8.setImageDrawable(getDrawable(drawable));
+        setSliderView(title);
 
         builder.setView(view);
 
