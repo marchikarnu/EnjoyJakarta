@@ -62,10 +62,10 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
                         sliderView.setImageDrawable(R.drawable.kokas);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.kokas);
+                        sliderView.setImageDrawable(R.drawable.kokas1);
                         break;
                 }
-                    break;
+                break;
                 case "Grand Indonesia": switch (i) {
                     case 0:
                         sliderView.setImageDrawable(R.drawable.gi2);
@@ -73,39 +73,46 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
                     case 1:
                         sliderView.setImageDrawable(R.drawable.gi4);
                         break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.gidalam);
                 }
-                    break;
+                break;
                 case "Pejaten Village": switch (i){
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.pv);
+                        sliderView.setImageDrawable(R.drawable.pv2);
                         break;
                     case 1:
                         sliderView.setImageDrawable(R.drawable.pv);
                         break;
                 }
-                    break;
+                break;
                 case "Thamrin City": switch (i){
                     case 0:
                         sliderView.setImageDrawable(R.drawable.thamrincity1);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.thamrincity1);
+                        sliderView.setImageDrawable(R.drawable.thamcity);
                         break;
                 }
+                break;
                 case "Pusat Grosir Cililitan": switch (i){
                     case 0:
                         sliderView.setImageDrawable(R.drawable.pgc);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.pgc);
+                        sliderView.setImageDrawable(R.drawable.pgc1);
                         break;
                 }
+                break;
                 case "Pasar Tanah Abang": switch (i){
                     case 0:
                         sliderView.setImageDrawable(R.drawable.tnhabang2);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.tnhabang2);
+                        sliderView.setImageDrawable(R.drawable.tnhabang);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.tnhabangdlm);
                         break;
                 }
             }
@@ -132,7 +139,10 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         nT1 = mMap.addMarker(new MarkerOptions()
                 .position(T1)
                 .title("Kota Kosablanka")
-                .snippet("Jl. Casablanka N0.88, RT.14/RW.5, Menteng Dalam, Kec. Tebet, kota Jakarta Selatan, DKI Jakarta, 12870"));
+                .snippet("Jl. Casablanka N0.88, RT.14/RW.5, Menteng Dalam, Kec. Tebet, kota Jakarta Selatan, DKI Jakarta, 12870\n"+
+                        "☞ Mall menengah ke atas" +
+                        "☞ Luas mall: 60,000 m2" +
+                        "☞ Jumlah lantai: 5 lantai=+ 3 basement parkir"));
         nT1.setTag(R.drawable.kokas);
 
 
@@ -151,25 +161,36 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         nT3 = mMap.addMarker(new MarkerOptions()
                 .position(T3)
                 .title("Pejaten Village")
-                .snippet("Jl. Pejaten Raya No.1, RT.1/RW.5, Pejaten Barat, Kec. Ps.Minggu, Kota Jakarta Selatan, DKI Jakarta, 12540"));
+                .snippet("Jl. Pejaten Raya No.1, RT.1/RW.5, Pejaten Barat, Kec. Ps.Minggu, Kota Jakarta Selatan, DKI Jakarta, 12540\n"+
+                       "☞ Mall menengah ke atas\n"+
+                        "56.000 meter persegi\n"+
+                        "Jumlah lantai: 6 (retail), 2 (parking)"));
         nT3.setTag(R.drawable.pv);
 
         nT4 = mMap.addMarker(new MarkerOptions()
                 .position(T4)
                 .title("Thamrin City")
-                .snippet("Jl. K.H. Mas Mansyur, Kebon Melati, Tanah Abang, Central Jakarta City, DKI Jakarta, 10230"));
+                .snippet("Jl. K.H. Mas Mansyur, Kebon Melati, Tanah Abang, Central Jakarta City, DKI Jakarta, 10230\n"+
+                        "☞ Thamrin City merupakan super blok yang dilengkapi dengan 9 tower Apartment, Town house, Hotel amaris, Perkantoran (PBTC)\n"+
+                        "\t dan Exhibition Hall yang berada di pusat Jakarta." +
+                        "☞ Jumlah lantai: 10"));
         nT4.setTag(R.drawable.thamrincity1);
 
         nT5 = mMap.addMarker(new MarkerOptions()
                 .position(T5)
                 .title("Pusat Grosir Cililitan")
-                .snippet("Jl. Dewi Sartika RT 001 RW 013 Kelurahan Cililitan, RW.11, Kecamatan, Kec. Kramat jati, Kota Jakarta Timur, DKI Jakarta, 13640"));
+                .snippet("Jl. Dewi Sartika RT 001 RW 013 Kel.Cililitan, RW.11, Kec. Kramat jati, Kota Jakarta Timur, DKI Jakarta, 13640\n"+
+                        "☞ PGC telah menjadi pusat perbelanjaan pertama yang tersambung dengan halte Transjakarta Cililitan\n"+
+                        "☞ Luas pertokoan: 1,9 Hektar\n"+
+                        "☞ Jumlah lantai: 10 Lantai, 6 (retail), 4 (Parking)"));
         nT5.setTag(R.drawable.pgc);
 
         nT6 = mMap.addMarker(new MarkerOptions()
                 .position(T6)
                 .title("Pasar Tanah Abang")
-                .snippet("Jalan KH. Mas Mansyur, Kelurahan Kampung Bali, Kec. Tanah Abang, Kota Jakarta Pusat, 10250"));
+                .snippet("Jalan KH. Mas Mansyur, Kel. Kampung Bali, Kec. Tanah Abang, Kota Jakarta Pusat, 10250\n"+
+                        "Di sana terdapat pasar tekstil terbesar di Asia Tenggara. Pasar tersebut telah ada sejak 1735.\n" +
+                        "Pasar Tanah Abang merupakan pusat perdagangan pakaian dan tekstil utama ke berbagai wilayah di Indonesia dan juga Asia serta dunia\n"));
         nT6.setTag(R.drawable.tnhabang2);
 
 

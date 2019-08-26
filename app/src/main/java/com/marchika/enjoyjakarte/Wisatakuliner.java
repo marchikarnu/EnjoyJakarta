@@ -122,6 +122,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
                         sliderView.setImageDrawable(R.drawable.gultikplace);
                         break;
                 }
+                    break;
                 case "Indomie Goreng Abang Adek": switch (i){
                     case 0:
                         sliderView.setImageDrawable(R.drawable.miead);
@@ -133,6 +134,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
                         sliderView.setImageDrawable(R.drawable.mieadplace);
                         break;
                 }
+                    break;
                 case "Sate Taichan Senayan": switch (i){
                     case 0:
                         sliderView.setImageDrawable(R.drawable.taican);

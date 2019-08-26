@@ -58,54 +58,70 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
             switch (title){
                 case "Dunia Fantasi": switch (i) {
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.dufan);
+                        sliderView.setImageDrawable(R.drawable.dufan2);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.dufan);
+                        sliderView.setImageDrawable(R.drawable.dufan3);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.dufankartun);
                         break;
                 }
                     break;
                 case "Planetarium": switch (i) {
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.planetdlm1);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.planet);
                         break;
                 }
                     break;
                 case "Kebun Binatang Ragunan": switch (i){
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.ragunan);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.primata);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.spesieskbr);
                         break;
                 }
                     break;
                 case "Monumen Nasional": switch (i){
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.monasni);
+                        sliderView.setImageDrawable(R.drawable.monas1);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.bgmonas);
+                        sliderView.setImageDrawable(R.drawable.monas2);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.monas3);
                         break;
                 }
+                    break;
                 case "Masjid Istiqlal": switch (i){
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.istiqlal1);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.dlmiqtiqlal);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.luasistiqlal);
                         break;
                 }
+                    break;
                 case "Seaworld Ancol": switch (i){
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.monasni);
+                        sliderView.setImageDrawable(R.drawable.seaworld1);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.monas);
+                        sliderView.setImageDrawable(R.drawable.seaworld2);
                         break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.seaworldshark);
                 }
 
             }
@@ -133,9 +149,10 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                 .position(P1)
                 .title("Dunia Fantasi")
                 .snippet("☞ Address: RW.10, Ancol, Pademangan, North Jakarta City, Jakarta 14430 \n"+
-                        "☞ Sebagai wahana fantasi sebagai kawasan edukasi fisika terbesar se-Indonesi" +
-                        "\t wahana hiburan outdoor dan indoor menyediakan permainan dengan teknologi canggih untuk berfantasi keliling Dunia\n"+
-                        "Opening Hours:\n"+
+                        "☞ Sebagai wahana fantasi kawasan edukasi fisika terbesar se-Indonesia" +
+                        "\t menyediakan permainan outdoor dan indoor dengan teknologi canggih untuk berfantasi keliling Dunia\n"+
+                        "☞ Telp: (021) 29222222\n"+
+                        "☞ Opening Hours:\n"+
                         "-Senin-Jumat: 10.00-18.00 WIB \n" +
                         "-Sabtu/Minggu/Libur: 10.00-20.00 WIB"));
         nP1.setTag(R.drawable.monas);
@@ -155,9 +172,9 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                 .position(P3)
                 .title("Kebun Binatang Ragunan")
                 .snippet("☞ Address: Jl. Harsono No.1, RT.10/RW.7 Ragunan, Kec. Ps. Minggu, Kota Jakarta Selatan, DKI Jakarta 12550 \n"+
-                        "☞ Sebagai salah satu kebun binatang terbesar di Indonesia, juga memiliki fungsi sebagai taman konservasi bagi berbagai satwa langka yang hampir punah \n"+
-                        "\t Terdapat area konservasi khusus bagi Orang Utan yaitu Pusat Primata Schmutzer, namun para pengunjung akan dikenakan biaya tiket tambahan khusus\n"+
-                        "\t Pengunjung juga bisa menikmati aneka hiburan rekreasi yang berbayar lainnya, seperti wisata menunggang gajah, unta, kuda dan mengendarai sepeda angsa di kolam buatan\n"+
+                        "☞ Salah satu kebun binatang terbesar di Indonesia, sebagai taman konservasi berbagai satwa langka \n"+
+                        "\t Terdapat area konservasi khusus bagi Orang Utan yaitu Pusat Primata Schmutzer\n"+
+                        "☞ Telp: (021) 78847114 \n"+
                         "☞ Opening hours: \n"+
                         "\t\t Selasa-Minggu : 06.00–16.00 WIB \n"+
                         "\t\t Senin: Tutup"));
@@ -169,6 +186,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                 .snippet("☞ Address: Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta\n"+
                         "☞ Monas adalah monumen peringatan setinggi 132 meter (433 kaki)\n"+
                         "\t Tugu Monas ini dimahkotai lidah api dilapisi lembaran emas yang melambangkan semangat perjuangan yang menyala-nyala\n"+
+                        "☞ Telp: (021) 3822255\n"+
                         "☞ Opening Hours Tugu Monas:\n"+
                         "Selasa-Minggu: 07.30 – 19.00 WIB\n" +
                         "Senin: Libur.\n"+
@@ -180,9 +198,10 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                 .title("Masjid Istiqlal")
                 .snippet("☞ Address: Jl. Taman Wijaya Kusuma, Ps. Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, DKI Jakarta, 10710\n"+
                         "☞ Masjid Istiqlal adalah masjid Nasional Negara Indonesia\n"+
-                        "\tSebagai tempat ibadah dan destinasi wisata yang dikemukakan oleh Presiden Soekarno\n"+
                         "\tsebagai masjid terbesar di asia tenggara dengan daya tampung 200.000 orang.\n"+
-                        "☞ Opening hours: 04:00 – 21:00"));
+                        "\tTempat ibadah dan destinasi wisata yang dikemukakan oleh Presiden Soekarno\n"+
+                        "☞ Opening hours: \n" +
+                        "All day 04:00 – 21:00"));
         nP5.setTag(R.drawable.monas);
 
         nP6 = mMap.addMarker(new MarkerOptions()
@@ -191,9 +210,10 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                 .snippet("☞ Address: Jalan Lodan Timur No.7, RW.10, Ancol, Kec. Pademangan, Kota Jkt Utara, DKI Jakarta, 14430\n"+
                         "☞ Memberikan edukasi tentang biota laut,\n"+
                         "\t menyuguhkan 3 zona perairan yaitu zona perairan tawar, zona pesisir, dan zona perairan laut.\n"+
-                "Opening Hours:\n" +
-                "Senin – Jumat  : 09.00 – 17.00 WIB\n" +
-                "Sabtu – Minggu : 09.00 – 18.00 WIB"));
+                        "☞ Telp: (021) 29222222\n"+
+                        "☞ Opening Hours:\n" +
+                        "Senin – Jumat  : 09.00 – 17.00 WIB\n" +
+                        "Sabtu – Minggu : 09.00 – 18.00 WIB"));
         nP6.setTag(R.drawable.monas);
 
 

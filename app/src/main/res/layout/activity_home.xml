@@ -35,7 +35,6 @@
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
             android:src="@drawable/info"
-
             android:textColor="@android:color/white" />
 
     </android.support.v7.widget.Toolbar>
@@ -102,7 +101,7 @@
                             android:layout_height="150dp"
                             android:elevation="100dp"
                             android:scaleType="fitCenter"
-                            app:cardBackgroundColor="#DDDD446C"
+                            app:cardBackgroundColor="#FFCCFFCC"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="100dp"
                             app:cardMaxElevation="100dp">
@@ -146,14 +145,14 @@
                             android:layout_marginTop="20dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/air"
-                            app:cardBackgroundColor="#DDDD446C"
+                            app:cardBackgroundColor="#dc14"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="100dp">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/belanja" />
+                                android:src="@drawable/air" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -191,7 +190,7 @@
                             android:layout_height="150dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/belanja"
-                            app:cardBackgroundColor="#DDDD446C"
+                            app:cardBackgroundColor="#FFFFFF99"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="100dp">
 
@@ -227,7 +226,7 @@
                             android:layout_marginTop="20dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/education"
-                            app:cardBackgroundColor="#DDDD446C"
+                            app:cardBackgroundColor="#FF9999FF"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="100dp">
 

@@ -88,7 +88,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(Home.this)
-                        .setTitle("Tentang")
+                        .setTitle("Teantang")
                         .setMessage("Aplikasi ini dibuat oleh Marchika Retno")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override

@@ -54,10 +54,13 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
             switch (title){
                 case "The Wave Park": switch (i) {
                     case 0:
-                        sliderView.setImageDrawable(R.drawable.thewavepark);
+                        sliderView.setImageDrawable(R.drawable.thewave);
                         break;
                     case 1:
-                        sliderView.setImageDrawable(R.drawable.thewave);
+                        sliderView.setImageDrawable(R.drawable.thewave1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.thewave3);
                         break;
                 }
                 break;
@@ -69,20 +72,20 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
                         sliderView.setImageDrawable(R.drawable.pik1);
                         break;
                     case 2:
-                        sliderView.setImageDrawable(R.drawable.pik2);
-                        break;
-                    case 3:
                         sliderView.setImageDrawable(R.drawable.pik3);
                         break;
 
                 }
-                    break;
+                break;
                 case "Atlantis Ancol": switch (i){
                     case 0:
                         sliderView.setImageDrawable(R.drawable.atlantis1);
                         break;
                     case 1:
                         sliderView.setImageDrawable(R.drawable.atlantis);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.atlantis2);
                         break;
                 }
                 break;
@@ -120,36 +123,58 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
                 .title("Waterboom Jakarta")
                 .snippet("Jl. Pantai Indah Barat No.1 RT.7/RW.2, Kamal Muara, Penjaringan, North Jakarta City, Jakarta, 14470\n"+
                         "☞ Saat ini hanya ada dua Waterbom di Indonesia yaitu: Waterbom Bali dan Waterbom Jakarta \n"+
-                        "☞ Telepon: (021) 55966666\n"+
+                        "☞ Telp: (021) 55966666\n"+
                         "☞ Opening Hours:\n" +
-                        "Monday\t\t\t9AM–7PM\n" +
-                        "Tuesday\t\t9AM–7PM\n" +
-                        "Wednesday\t9AM–7PM\n" +
-                        "Thursday\t\t9AM–7PM\n" +
-                        "Friday\t\t\t9AM–7PM\n" +
-                        "Saturday\t\t9AM–7PM\n" +
-                        "Sunday\t\t\t9AM–7PM"));
+                        "Weekday: 10.00 – 21.00\n"+
+                        "Weekend: 08.00 – 21.00"));
         nC1.setTag(R.drawable.pik);
         nC1.setTag(R.drawable.pik1);
+        nC1.setTag(R.drawable.pik3);
 
         nC2 = mMap.addMarker(new MarkerOptions()
                 .position(C2)
                 .title("Atlantis Ancol")
-                .snippet("Lokasi: Taman Impian Jaya Ancol, Jl. Lodan Timur No.7, RW.10, Ancol, Pademangan, North Jakarta City, Jakarta 14430"));
+                .snippet("Lokasi: Taman Impian Jaya Ancol, Jl. Lodan Timur No.7, RW.10, Ancol, Pademangan, North Jakarta City, Jakarta 14430\n"+
+                        "☞ taman rekreasi air tematik dengan konsep peradaban dan kota-kota kuno di wilayah Mediterania dengan mengarungi Sembilan jenis kolam dan ragam permainan wahana\n"+
+                        "☞ Telp: (021) 29222222" +
+                        "☞ Opening Hours:\n" +
+                        "Weekday\t08:00 – 18:00 WIB\n" +
+                        "Weekend\t07:00 – 20:00 WIB\n" +
+                        ""));
         nC2.setTag(R.drawable.atlantis);
         nC2.setTag(R.drawable.atlantis1);
+        nC2.setTag(R.drawable.atlantis2);
 
         nC3 = mMap.addMarker(new MarkerOptions()
                 .position(C3)
                 .title("Snowbay")
-                .snippet("Komplek Taman Mini Indonesia Indah. Kel. Pinang Ranti, Kec. Makasar, Kota Jakarta Timur, DKI Jakarta, 13820"));
+                .snippet("Komplek Taman Mini Indonesia Indah. Kel. Pinang Ranti, Kec. Makasar, Kota Jakarta Timur, DKI Jakarta, 13820 \n" +
+                        "☞ Telp: (021) 87783530\n" +
+                        "☞ Opening Hours: \n" +
+                        "Sunday\t9AM–6PM\n" +
+                        "Monday\t9AM–6PM\n" +
+                        "Tuesday\t9AM–6PM\n" +
+                        "Wednesday\t9AM–6PM\n" +
+                        "Thursday\t9AM–6PM\n" +
+                        "Friday\t9AM–6PM\n" +
+                        "Saturday\t9AM–6PM\n"));
         nC3.setTag(R.drawable.snowbay);
         nC3.setTag(R.drawable.snowbay1);
 
         nC4 = mMap.addMarker(new MarkerOptions()
                 .position(C4)
                 .title("The Wave Park")
-                .snippet("PIM, Jl Metro PI RT.1/RW.16, Kel. Pondok Pinang, Kec. Kebayoran Lama, Kota Jakarta Selatan, DKI Jakarta, 12310"));
+                .snippet("PIM, Jl Metro PI RT.1/RW.16, Kel. Pondok Pinang, Kec. Kebayoran Lama, Kota Jakarta Selatan, DKI Jakarta, 12310\n" +
+                        "☞ Taman air dengan mesin simulator gelombang, kolam ukuran Olimpiade & taman bermain interaktif untuk anak-anak.\n" +
+                        "☞ Telp: (021) 7506750\n" +
+                        "☞ Opening Hours: \n" +
+                        "Sunday\t6AM–9PM\n" +
+                        "Monday\t6AM–9PM\n" +
+                        "Tuesday\t6AM–9PM\n" +
+                        "Wednesday\t6AM–9PM\n" +
+                        "Thursday\t6AM–9PM\n" +
+                        "Friday\t6AM–9PM\n" +
+                        "Saturday\t6AM–9PM\n"));
         nC4.setTag(R.drawable.thewave);
         nC4.setTag(R.drawable.thewavepark);
 

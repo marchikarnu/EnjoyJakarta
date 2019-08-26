@@ -44,8 +44,5 @@
         android:text="Location" />
 
         </RelativeLayout>
-
     </ScrollView>
-
-
 </LinearLayout>
