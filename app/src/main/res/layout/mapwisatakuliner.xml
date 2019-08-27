@@ -25,37 +25,24 @@
         android:text="TITLE" />
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="12dp"
-        android:layout_gravity="center">
-
-        <TextView
-            android:id="@+id/txtLoc"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Location" />
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/harga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtLoc"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/txtLoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Location" />
 
+        </RelativeLayout>
     </ScrollView>
-
 </LinearLayout>
