@@ -105,6 +105,8 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
                     case 1:
                         sliderView.setImageDrawable(R.drawable.snowbay);
                         break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.snowbay22);
                 }
             }
 

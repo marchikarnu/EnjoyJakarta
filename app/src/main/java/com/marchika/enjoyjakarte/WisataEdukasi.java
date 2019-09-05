@@ -87,6 +87,8 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                     case 1:
                         sliderView.setImageDrawable(R.drawable.planet);
                         break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.planetdlm);
                 }
                     break;
                 case "Kebun Binatang Ragunan": switch (i){

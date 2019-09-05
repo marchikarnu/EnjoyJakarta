@@ -74,6 +74,9 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
                     case 1:
                         sliderView.setImageDrawable(R.drawable.kokas1);
                         break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.kokas2);
+                        break;
                 }
                 break;
                 case "Grand Indonesia": switch (i) {
@@ -85,6 +88,7 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
                         break;
                     case 2:
                         sliderView.setImageDrawable(R.drawable.gidalam);
+                        break;
                 }
                 break;
                 case "Pejaten Village": switch (i){
@@ -94,6 +98,8 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
                     case 1:
                         sliderView.setImageDrawable(R.drawable.pv);
                         break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.pv1);
                 }
                 break;
                 case "Thamrin City": switch (i){
