@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,8 +24,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.marchika.enjoyjakarte.DBHelper.DBHelper;
-import com.marchika.enjoyjakarte.DBHelper.Kuliner;
+import com.smarteist.autoimageslider.DefaultSliderView;
+import com.smarteist.autoimageslider.SliderLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +51,8 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
     private Marker nL4;
     private Marker nL5;
     private Marker nL6;
-    private List<Kuliner> listKuliner;
-    private DBHelper db;
-    private TextView harga;
+    private SliderLayout imageSlider;
+    private String TAG = "Wisata Kuliner";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +62,92 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        db = new DBHelper(this);
-        listKuliner = new ArrayList<Kuliner>();
-        listKuliner = db.getKuliner();
-
-        harga = findViewById(R.id.harga);
     }
 
+    private void setSliderView(String title){
+        for (int i = 0; i <= 2; i++) {
 
+            DefaultSliderView sliderView = new DefaultSliderView(this);
+
+            switch (title){
+                case "Bandar Djakarta Ancol": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.bandarjktfood);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.bandarjkt);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.bandarjkt1);
+                        break;
+                }
+                    break;
+                case "Bubur Ayam Barito": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.buburab);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.buburab1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.buburabplace);
+                        break;
+                }
+                    break;
+                case "Nasi Goreng Kambing Kebon Sirih": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.ngkks);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.ngkks1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.ngkksplace);
+                        break;
+                }
+                    break;
+                case "Gulai Tikungan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.gultik);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.gultik1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.gultikplace);
+                        break;
+                }
+                    break;
+                case "Indomie Goreng Abang Adek": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.miead);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.miead1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.mieadplace);
+                        break;
+                }
+                    break;
+                case "Sate Taichan Senayan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.taican);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.taican1);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.taicanplace1);
+                        break;
+                }
+            }
+
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageSlider.addSliderView(sliderView);
+
+        }
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -74,39 +160,62 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://quiet-meadow-14635.herokuapp.com/WisataKuliner";
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null ,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+//                nC1.setSnippet(response.toString());
+                for(int i = 0;i<response.length();i++){
+                    try {
+                        JSONObject data = response.getJSONObject(i);
+                        switch (data.getString("nama")){
+                            case "Bandar Djakarta":
+                                nL1.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Bubur Ayam Barito":
+                                nL2.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Nasi Goreng Kambing Kebon Sirih":
+                                nL3.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Gulai Tikungan":
+                                nL4.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Indomie Goreng Abang Adek":
+                                nL5.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Sate Taichan Senayan":
+                                nL6.setSnippet(data.getString("deskripsi"));
+                                break;
+                        }
+
+                    }catch (JSONException e){
+                        //TODO : JSON ERROR
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO: Handle error
+                Log.e("err",error.toString());
+            }
+        });
+
+        stringRequest.setTag(TAG);
+        queue.add(stringRequest);
 
         nL1 = mMap.addMarker(new MarkerOptions()
                 .position(L1)
-                .title("Bandar Djakarta Ancol")
-                .snippet("☞ Pintu Timur, Taman Impian Jaya Ancol, Jl Lodan Timur No.7, RW 10, Ancol, Kec.Pademangan, Kota Jkt Utara, DKI Jakarta, 14430 \n" +
-                        "☞ Live seafood to choose \n" +
-                        "☞ Average cost: Rp250.000 for two people (approx.) \n" +
-                        "☞ Telp: (021) 6455472 \n" +
-                        "☞ Opening hours: \n" +
-                            "\tSaturday\t\t\t 10AM–12AM\n" +
-                            "\tSunday\t\t\t\t 10AM–11:30PM\n" +
-                            "\tMonday\t\t\t\t 11AM–11PM\n" +
-                            "\tTuesday \t\t\t 11AM–11PM\n" +
-                            "\tWednesday\t 11AM–11PM\n" +
-                            "\tThursday\t\t\t 11AM–11PM\n" +
-                            "\tFriday\t\t\t\t\t 11AM–11PM"));
+                .title("Bandar Djakarta Ancol"));
         nL1.setTag(R.drawable.bandarjktfood);
         nL1.setTag(R.drawable.bandarjkt);
 
         nL2 = mMap.addMarker(new MarkerOptions()
                 .position(L2)
                 .title("Bubur Ayam Barito")
-                .snippet("☞ Jl. Gandaria Tengah III No.3, RW.4, Kramat Pela, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, 12130 \n" +
-                        "☞ The one and only chicken porridge topped with crunchy cheese sticks \n" +
-                        "☞ Telp: 0813 81488989\n"+
-                        "☞ Average cost: Rp60.000 for two people (approx.) \n" +
-                        "☞ Opening hours: \n" +
-                                "\tTue\t17h – 23h\n" +
-                                "\tWed\t17h – 23h\n" +
-                                "\tThu\t17h – 23h\n" +
-                                "\tFri\t17h – 23h\n" +
-                                "\tSat\t17h – 23h\n" +
-                                "\tSun\t17h – 23h"));
+                );
         nL2.setTag(R.drawable.buburab);
         nL2.setTag(R.drawable.buburab1);
 
@@ -114,19 +223,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL3 = mMap.addMarker(new MarkerOptions()
                 .position(L3)
                 .title("Nasi Goreng Kambing Kebon Sirih")
-                .snippet("☞ Jl. Kebon Sirih Barat I Dalam I No.9, RT.1/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, DKI Jakarta 10340 \n"+
-                        "☞ Tempat makan santai dan sederhana menyajikan menu nasi goreng kambing dan ayam, sop, es buah, sate \n" +
-                        "☞ Average cost: Rp120.000 for two people (approx.) \n"+
-                        "☞ Telp: 0811 190775\n" +
-                        "\t\t\t 0811 865011 \n" +
-                        "☞ Opening hours: \n" +
-                            "\tMon\t17h – 2h\n" +
-                            "\tTue\t17h – 2h\n" +
-                            "\tWed\t17h – 2h\n" +
-                            "\tThu\t17h – 2h\n" +
-                            "\tFri\t17h – 2h\n" +
-                            "\tSat\t17h – 2h\n" +
-                            "\tSun\t17h – 2h\n"));
+                );
         nL3.setTag(R.drawable.ngkks1);
         nL3.setTag(R.drawable.ngkks);
         nL3.setTag(R.drawable.ngkksplace);
@@ -135,18 +232,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL4 = mMap.addMarker(new MarkerOptions()
                 .position(L4)
                 .title("Gulai Tikungan ")
-                .snippet("☞ Jl. Mahakam No.28, RT.1/RW.6, Kramat Pela, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, 12130 \n" +
-                        "☞ Indonesian version of lamb curry. \n"+
-                        "☞ Average cost: Rp50.000 for two people (approx.)\n"+
-                        "☞ Telp: 0852 87676143 \n" +
-                        "☞ Opening hours: \n" +
-                        "Mon\t17h – 24h\n" +
-                        "Tue\t17h – 24h\n" +
-                        "Wed\t17h – 24h\n" +
-                        "Thu\t17h – 24h\n" +
-                        "Fri\t17h – 24h\n" +
-                        "Sat\t17h – 24h\n" +
-                        "Sun\t17h – 24h\n"));
+                );
         nL4.setTag(R.drawable.gultik);
         nL4.setTag(R.drawable.gultik1);
         nL4.setTag(R.drawable.gultikplace);
@@ -155,19 +241,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL5 = mMap.addMarker(new MarkerOptions()
                 .position(L5)
                 .title("Indomie Goreng Abang Adek")
-                .snippet("☞ Jl. Mandala Utara No.8, RT.16/RW.4, Tomang, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta, 11440 \n" +
-                        "☞ Instant noodle with generous chopped chilli toppings \n"+
-                        "☞ Average cost: Rp90.000 for two people (approx.)\n"+
-                        "☞ Telp: 021 5657988\n" +
-                        "\t\t 0815 10199224 \n" +
-                        "☞ Opening hours: \n" +
-                        "Mon\t9h – 2h\n" +
-                        "Tue\t9h – 2h\n" +
-                        "Wed\t9h – 2h\n" +
-                        "Thu\t9h – 2h\n" +
-                        "Fri\t9h – 2h\n" +
-                        "Sat\t9h – 2h\n" +
-                        "Sun\t9h – 2h"));
+                );
         nL5.setTag(R.drawable.miead);
         nL5.setTag(R.drawable.miead1);
 
@@ -175,19 +249,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL6 = mMap.addMarker(new MarkerOptions()
                 .position(L6)
                 .title("Sate Taichan Senayan")
-                .snippet("☞ Jl. Simprug Golf 2 No.1, RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, 10270 \n"+
-                        "☞ Sate Taichan 87 Bang Ocit \n"+
-                        "☞ Average cost: Rp60.000 for two people (approx.)\n"+
-                        "☞ Telp: 0878 86893623\n" +
-                        "\t\t 0878 844445288\n" +
-                        "☞ Opening hours: \n" +
-                        "Mon\t21h – 2h\n" +
-                        "Tue\t21h – 2h\n" +
-                        "Wed\t21h – 2h\n" +
-                        "Thu\t21h – 2h\n" +
-                        "Fri\t21h – 2h\n" +
-                        "Sat\t21h – 2h\n" +
-                        "Sun\t21h – 2h"));
+                );
         nL6.setTag(R.drawable.taican);
         nL6.setTag(R.drawable.taican1);
 
@@ -207,10 +269,6 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         if (clickCount != null) {
             clickCount = clickCount + 1;
             marker.setTag(clickCount);
-            Toast.makeText(this,
-                    marker.getTitle() +
-                            " has been clicked " + clickCount + " times.",
-                    Toast.LENGTH_SHORT).show();
 
             showCustomDialog(marker.getTitle(), marker.getSnippet(), (Integer) marker.getTag());
         }
@@ -226,23 +284,14 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisatakuliner, null);
+        imageSlider = view.findViewById(R.id.kulinerSlider);
 
         TextView txtTitle = view.findViewById(R.id.txtTitle);
         txtTitle.setText(title);
 
         TextView txtLoc = view.findViewById(R.id.txtLoc);
         txtLoc.setText(location);
-
-        TextView txtHarga = view.findViewById(R.id.harga);
-
-        ImageView img9 = view.findViewById(R.id.img);
-        img9.setImageDrawable(getDrawable(drawable));
-
-        ImageView img10 = view.findViewById(R.id.im);
-        img10.setImageDrawable(getDrawable(drawable));
-
-        ImageView img11 = view.findViewById(R.id.i);
-        img11.setImageDrawable(getDrawable(drawable));
+        setSliderView(title);
 
         builder.setView(view);
 
@@ -256,18 +305,6 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-
-    public void tunjukkanHarga(int urutanHarga){
-        try{
-            Kuliner kuliner = new Kuliner();
-            kuliner = listKuliner.get(urutanHarga);
-            String harga2 = kuliner.getAverage();
-            harga.setText(harga2.toCharArray(),0,harga2.length());
-
-        }catch (Exception e){
-            Log.e(this.getClass().toString(), e.getMessage(), e.getCause());
-        }
     }
 }
 

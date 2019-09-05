@@ -5,19 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
+import com.smarteist.autoimageslider.SliderAnimations;
 
 public class Home extends AppCompatActivity {
-    private ImageButton wk, wb, wh, wa;
+    private CardView wk, wb, wh, wa;
     private SliderLayout imageSlider;
     private TextView btnKeluar;
     private ImageView btnInfo;
@@ -87,7 +88,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(Home.this)
-                        .setTitle("Tentang")
+                        .setTitle("Teantang")
                         .setMessage("Aplikasi ini dibuat oleh Marchika Retno")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
@@ -100,7 +101,6 @@ public class Home extends AppCompatActivity {
 
 
         imageSlider = findViewById(R.id.imageSlider);
-
         setSliderView();
     }
 

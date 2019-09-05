@@ -9,25 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/ai"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"/>
-
-        <ImageView
-            android:id="@+id/ib"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"
-            />
-
-        <ImageView
-            android:id="@+id/ij"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"/>
+        <com.smarteist.autoimageslider.SliderLayout
+            android:id="@+id/edukasiSlider"
+            android:layout_width="match_parent"
+            android:layout_height="230dp" />
     </LinearLayout>
 
     <TextView
@@ -43,23 +28,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
         <TextView
         android:id="@+id/oc"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:text="Location" />
 
-        </RelativeLayout>
-
     </ScrollView>
-
-
 </LinearLayout>

@@ -4,13 +4,19 @@ import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqilganten.enjoyjakarte.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,6 +24,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.smarteist.autoimageslider.DefaultSliderView;
+import com.smarteist.autoimageslider.SliderLayout;
+import com.smarteist.autoimageslider.SliderView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
@@ -36,6 +49,8 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
     private Marker nP4;
     private Marker nP5;
     private Marker nP6;
+    private SliderLayout imageSlider;
+    private String TAG = "Wisata Hiburan Edukasi";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +62,87 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
+    private void setSliderView(String title){
+        for (int i = 0; i <= 2; i++) {
+
+            DefaultSliderView sliderView = new DefaultSliderView(this);
+
+            switch (title){
+                case "Dunia Fantasi": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.dufan2);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.dufan3);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.dufankartun);
+                        break;
+                }
+                    break;
+                case "Planetarium": switch (i) {
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.planetdlm1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.planet);
+                        break;
+                }
+                    break;
+                case "Kebun Binatang Ragunan": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.ragunan);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.primata);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.spesieskbr);
+                        break;
+                }
+                    break;
+                case "Monumen Nasional": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.monas1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.monas2);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.monas3);
+                        break;
+                }
+                    break;
+                case "Masjid Istiqlal": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.istiqlal1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.dlmiqtiqlal);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.luasistiqlal);
+                        break;
+                }
+                    break;
+                case "Seaworld Ancol": switch (i){
+                    case 0:
+                        sliderView.setImageDrawable(R.drawable.seaworld1);
+                        break;
+                    case 1:
+                        sliderView.setImageDrawable(R.drawable.seaworld2);
+                        break;
+                    case 2:
+                        sliderView.setImageDrawable(R.drawable.seaworldshark);
+                }
+
+            }
+
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageSlider.addSliderView(sliderView);
+
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -60,72 +156,80 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://quiet-meadow-14635.herokuapp.com/WisataHiburanEdukasi";
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null ,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+//                nC1.setSnippet(response.toString());
+                for(int i = 0;i<response.length();i++){
+                    try {
+                        JSONObject data = response.getJSONObject(i);
+                        switch (data.getString("nama")){
+                            case "Dunia Fantasi":
+                                nP1.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Planetarium":
+                                nP2.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Kebun Binatang Ragunan":
+                                nP3.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Monumen Nasional":
+                                nP4.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Masjid Istiqlal":
+                                nP5.setSnippet(data.getString("deskripsi"));
+                                break;
+                            case "Seaworld":
+                                nP6.setSnippet(data.getString("deskripsi"));
+                                break;
+                        }
+
+                    }catch (JSONException e){
+                        //TODO : JSON ERROR
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO: Handle error
+                Log.e("err",error.toString());
+            }
+        });
+
+        stringRequest.setTag(TAG);
+        queue.add(stringRequest);
 
         nP1 = mMap.addMarker(new MarkerOptions()
                 .position(P1)
-                .title("Dunia Fantasi")
-                .snippet("☞ Address: RW.10, Ancol, Pademangan, North Jakarta City, Jakarta 14430 \n"+
-                        "☞ Sebagai wahana fantasi sebagai kawasan edukasi fisika terbesar se-Indonesi" +
-                        "\t wahana hiburan outdoor dan indoor menyediakan permainan dengan teknologi canggih untuk berfantasi keliling Dunia\n"+
-                        "Opening Hours:\n"+
-                        "-Senin-Jumat: 10.00-18.00 WIB \n" +
-                        "-Sabtu/Minggu/Libur: 10.00-20.00 WIB"));
+                .title("Dunia Fantasi"));
         nP1.setTag(R.drawable.monas);
 
         nP2 = mMap.addMarker(new MarkerOptions()
                 .position(P2)
-                .title("Planetarium")
-                .snippet("☞ Address: Jl. Cikini Raya No.73, RT.8/RW.2, Cikini, Kec. Menteng, Kota Jakarta Pusat, DKI Jakarta, 10330 \n"+
-                        "☞ Fasilitas: Pertunjukan teater bintang, Observatorium, Ruang pameran \n"+
-                        "☞ Telp: (021) 2305146 \n"+
-                        "☞ Opening hours: \n"+
-                        "\t\t Selasa-Minggu : 08.00–15.00 WIB \n"+
-                        "\t\t Senin dan libur Nasional: Tutup"));
+                .title("Planetarium"));
         nP2.setTag(R.drawable.monas);
 
         nP3 = mMap.addMarker(new MarkerOptions()
                 .position(P3)
-                .title("Kebun Binatang Ragunan")
-                .snippet("☞ Address: Jl. Harsono No.1, RT.10/RW.7 Ragunan, Kec. Ps. Minggu, Kota Jakarta Selatan, DKI Jakarta 12550 \n"+
-                        "☞ Sebagai salah satu kebun binatang terbesar di Indonesia, juga memiliki fungsi sebagai taman konservasi bagi berbagai satwa langka yang hampir punah \n"+
-                        "\t Terdapat area konservasi khusus bagi Orang Utan yaitu Pusat Primata Schmutzer, namun para pengunjung akan dikenakan biaya tiket tambahan khusus\n"+
-                        "\t Pengunjung juga bisa menikmati aneka hiburan rekreasi yang berbayar lainnya, seperti wisata menunggang gajah, unta, kuda dan mengendarai sepeda angsa di kolam buatan\n"+
-                        "☞ Opening hours: \n"+
-                        "\t\t Selasa-Minggu : 06.00–16.00 WIB \n"+
-                        "\t\t Senin: Tutup"));
+                .title("Kebun Binatang Ragunan"));
         nP3.setTag(R.drawable.monas);
 
         nP4 = mMap.addMarker(new MarkerOptions()
                 .position(P4)
-                .title("Monumen Nasional")
-                .snippet("☞ Address: Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta\n"+
-                        "☞ Monas adalah monumen peringatan setinggi 132 meter (433 kaki)\n"+
-                        "\t Tugu Monas ini dimahkotai lidah api dilapisi lembaran emas yang melambangkan semangat perjuangan yang menyala-nyala\n"+
-                        "☞ Opening Hours Tugu Monas:\n"+
-                        "Selasa-Minggu: 07.30 – 19.00 WIB\n" +
-                        "Senin: Libur.\n"+
-                        "Note: Area Taman Monas: 07.00 – 24.00 WIB"));
+                .title("Monumen Nasional"));
         nP4.setTag(R.drawable.monas);
 
         nP5 = mMap.addMarker(new MarkerOptions()
                 .position(P5)
-                .title("Masjid Istiqlal")
-                .snippet("☞ Address: Jl. Taman Wijaya Kusuma, Ps. Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, DKI Jakarta, 10710\n"+
-                        "☞ Masjid Istiqlal adalah masjid Nasional Negara Indonesia\n"+
-                        "\tSebagai tempat ibadah dan destinasi wisata yang dikemukakan oleh Presiden Soekarno\n"+
-                        "\tsebagai masjid terbesar di asia tenggara dengan daya tampung 200.000 orang.\n"+
-                        "☞ Opening hours: 04:00 – 21:00"));
+                .title("Masjid Istiqlal"));
         nP5.setTag(R.drawable.monas);
 
         nP6 = mMap.addMarker(new MarkerOptions()
                 .position(P6)
-                .title("Seaworld Ancol")
-                .snippet("☞ Address: Jalan Lodan Timur No.7, RW.10, Ancol, Kec. Pademangan, Kota Jkt Utara, DKI Jakarta, 14430\n"+
-                        "☞ Memberikan edukasi tentang biota laut,\n"+
-                        "\t menyuguhkan 3 zona perairan yaitu zona perairan tawar, zona pesisir, dan zona perairan laut.\n"+
-                "Opening Hours:\n" +
-                "Senin – Jumat  : 09.00 – 17.00 WIB\n" +
-                "Sabtu – Minggu : 09.00 – 18.00 WIB"));
+                .title("Seaworld Ancol"));
         nP6.setTag(R.drawable.monas);
 
 
@@ -145,10 +249,6 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         if (clickCount != null) {
             clickCount = clickCount + 1;
             marker.setTag(clickCount);
-            Toast.makeText(this,
-                    marker.getTitle() +
-                            " has been clicked " + clickCount + " times.",
-                    Toast.LENGTH_SHORT).show();
 
             showCustomDialog(marker.getTitle(), marker.getSnippet(), (Integer) marker.getTag());
         }
@@ -164,6 +264,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisataedukasi, null);
+        imageSlider = view.findViewById(R.id.edukasiSlider);
 
         TextView txtTitle = view.findViewById(R.id.tu);
         txtTitle.setText(title);
@@ -171,12 +272,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         TextView txtLoc = view.findViewById(R.id.oc);
         txtLoc.setText(location);
 
-        ImageView img6 = view.findViewById(R.id.ai);
-        img6.setImageDrawable(getDrawable(drawable));
-        ImageView img7 = view.findViewById(R.id.ib);
-        img7.setImageDrawable(getDrawable(drawable));
-        ImageView img8 = view.findViewById(R.id.ij);
-        img8.setImageDrawable(getDrawable(drawable));
+        setSliderView(title);
 
         builder.setView(view);
 

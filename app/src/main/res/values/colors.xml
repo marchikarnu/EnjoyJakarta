@@ -32,7 +32,7 @@
     <color name="ivory">#FFFFFFCC</color>
     <color name="darkred">#FF800000</color>
     <color name="paleblue">#FF99CCFF</color>
-  >
+  <color name="bground">#DDDD446C</color>
 
 </resources>
 
