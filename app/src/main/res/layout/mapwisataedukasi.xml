@@ -15,21 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="230dp" />
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/oc"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:text="Location" />
-
-    </ScrollView>
-
     <TextView
         android:id="@+id/tu"
         style="@style/TextAppearance.AppCompat.Title"
@@ -38,4 +23,24 @@
         android:layout_gravity="center"
         android:layout_margin="16dp"
         android:text="TITLE" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/oc"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:text="Location" />
+
+        </RelativeLayout>
+    </ScrollView>
 </LinearLayout>
