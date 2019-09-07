@@ -2,18 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#FF9999FF">
+    android:background="#FF9999FF"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <com.smarteist.autoimageslider.SliderLayout
             android:id="@+id/edukasiSlider"
             android:layout_width="match_parent"
             android:layout_height="230dp" />
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/oc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:text="Location" />
+
+    </ScrollView>
 
     <TextView
         android:id="@+id/tu"
@@ -23,18 +38,4 @@
         android:layout_gravity="center"
         android:layout_margin="16dp"
         android:text="TITLE" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-        android:id="@+id/oc"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:text="Location" />
-
-    </ScrollView>
 </LinearLayout>

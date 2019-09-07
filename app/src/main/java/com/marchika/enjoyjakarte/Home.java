@@ -73,7 +73,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 new AlertDialog.Builder(Home.this)
                         .setTitle("Keluar")
-                        .setMessage("Terima Kasih telah menggunakan aplikasi ini")
+                        .setMessage("Terima kasih telah menggunakan aplikasi ini. Semoga membantu ☺")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -88,8 +88,11 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(Home.this)
-                        .setTitle("Teantang")
-                        .setMessage("Aplikasi ini dibuat oleh Marchika Retno")
+                        .setTitle("Tentang")
+                        .setMessage("Aplikasi 'EnjoyJakarte' dibuat oleh Marchika Retno\n" +
+                                "Universitas Gunadarma \n"+
+                                "September, 2019\n" +
+                                "Version 1.0.0")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

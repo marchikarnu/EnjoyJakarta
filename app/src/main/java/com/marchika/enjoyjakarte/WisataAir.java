@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.volley.*;
 
 
@@ -29,7 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class WisataAir extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
+public class WisataAir extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private static final LatLng C1 = new LatLng(-6.1138953, 106.7472149); //waterboom jkt
@@ -37,7 +38,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
     private static final LatLng C3 = new LatLng(-6.2990434, 106.8917246); //snowbay
     private static final LatLng C4 = new LatLng(-6.267746, 106.784401); // the wave park
 
-//    private List<Marker> nC = new ArrayList<Marker>();
+    //    private List<Marker> nC = new ArrayList<Marker>();
     private Marker nC1;
     private Marker nC2;
     private Marker nC3;
@@ -47,7 +48,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wisata_air);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -55,59 +56,63 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
         mapFragment.getMapAsync(this);
     }
 
-    private void setSliderView(String title){
+    private void setSliderView(String title) {
         for (int i = 0; i <= 2; i++) {
 
             DefaultSliderView sliderView = new DefaultSliderView(this);
 
-            switch (title){
-                case "The Wave Park": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.thewave);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.thewave1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.thewave3);
-                        break;
-                }
-                break;
-                case "Waterboom Jakarta": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.pik);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.pik1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.pik3);
-                        break;
+            switch (title) {
+                case "The Wave Park":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.thewave);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.thewave1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.thewave3);
+                            break;
+                    }
+                    break;
+                case "Waterboom Jakarta":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.pik);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.pik1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.pik3);
+                            break;
 
-                }
-                break;
-                case "Atlantis Ancol": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.atlantis1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.atlantis);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.atlantis2);
-                        break;
-                }
-                break;
-                case "Snowbay": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.snowbay1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.snowbay);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.snowbay22);
-                }
+                    }
+                    break;
+                case "Atlantis Ancol":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.atlantis1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.atlantis);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.atlantis2);
+                            break;
+                    }
+                    break;
+                case "Snowbay":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.snowbay1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.snowbay);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.snowbay22);
+                    }
             }
 
             sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -122,14 +127,14 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://quiet-meadow-14635.herokuapp.com/WisataAir";
-        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null ,new Response.Listener<JSONArray>() {
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 //                nC1.setSnippet(response.toString());
-                for(int i = 0;i<response.length();i++){
+                for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject data = response.getJSONObject(i);
-                        switch (data.getString("nama")){
+                        switch (data.getString("nama")) {
                             case "Waterboom Jakarta":
                                 nC1.setSnippet(data.getString("deskripsi"));
                                 break;
@@ -144,7 +149,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
                                 break;
                         }
 
-                    }catch (JSONException e){
+                    } catch (JSONException e) {
                         //TODO : JSON ERROR
                     }
                 }
@@ -153,7 +158,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
             @Override
             public void onErrorResponse(VolleyError error) {
                 // TODO: Handle error
-                Log.e("err",error.toString());
+                Log.e("err", error.toString());
             }
         });
 
@@ -188,7 +193,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
                 .title("The Wave Park"));
         nC4.setTag(R.drawable.thewave);
         nC4.setTag(R.drawable.thewavepark);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(C1,14));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(C1, 14));
         mMap.setOnMarkerClickListener(this);
     }
 
@@ -205,7 +210,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback,Go
     }
 
     private void showCustomDialog(String title, String location, int drawable) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);                                                                                                                                                                                                                                                                        
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Details");
 
         View view = LayoutInflater.from(this).inflate(R.layout.mapwisataair, null);

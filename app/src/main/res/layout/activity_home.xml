@@ -12,22 +12,6 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/fanta">
 
-        <TextView
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wisata Jakarta"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/btnKeluar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:text="Keluar"
-            android:textColor="@android:color/white" />
-
         <ImageView
             android:id="@+id/btnInfo"
             android:layout_width="wrap_content"
@@ -37,7 +21,24 @@
             android:src="@drawable/info"
             android:textColor="@android:color/white" />
 
+        <TextView
+            android:id="@+id/btnKeluar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                   android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+            android:text="Keluar"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wisata Jakarta"
+            android:textColor="@android:color/white" />
+
     </android.support.v7.widget.Toolbar>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -129,7 +130,6 @@
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
                         </android.support.v7.widget.CardView>
-
 
 
                     </RelativeLayout>
@@ -261,5 +261,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-
 </LinearLayout>

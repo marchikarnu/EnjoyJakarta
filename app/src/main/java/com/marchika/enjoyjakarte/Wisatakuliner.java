@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,19 +30,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener  {
+public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
 
     private GoogleMap mMap;
-    private static final LatLng L1 = new LatLng (-6.122493, 106.843411); // bandar djakarta
-    private static final LatLng L2 = new LatLng (-6.246475, 106.793048); // bubur ayam barito
-    private static final LatLng L3 = new LatLng (-6.183210, 106.825690); // nasi goreng kambing
-    private static final LatLng L4 = new LatLng (-6.243616, 106.796550); // gultik
-    private static final LatLng L5 = new LatLng (-6.170950, 106.799229); // indomie abang adek
-    private static final LatLng L6 = new LatLng (-6.228264, 106.795939); // taichan senayan
+    private static final LatLng L1 = new LatLng(-6.122493, 106.843411); // bandar djakarta
+    private static final LatLng L2 = new LatLng(-6.246475, 106.793048); // bubur ayam barito
+    private static final LatLng L3 = new LatLng(-6.183210, 106.825690); // nasi goreng kambing
+    private static final LatLng L4 = new LatLng(-6.243616, 106.796550); // gultik
+    private static final LatLng L5 = new LatLng(-6.170950, 106.799229); // indomie abang adek
+    private static final LatLng L6 = new LatLng(-6.228264, 106.795939); // taichan senayan
 
     private Marker nL1;
     private Marker nL2;
@@ -57,90 +53,96 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wisatamakuliner);
+        setContentView(R.layout.activity_wisata_kuliner);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
-    private void setSliderView(String title){
+    private void setSliderView(String title) {
         for (int i = 0; i <= 2; i++) {
 
             DefaultSliderView sliderView = new DefaultSliderView(this);
 
-            switch (title){
-                case "Bandar Djakarta Ancol": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.bandarjktfood);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.bandarjkt);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.bandarjkt1);
-                        break;
-                }
+            switch (title) {
+                case "Bandar Djakarta Ancol":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.bandarjktfood);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.bandarjkt);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.bandarjkt1);
+                            break;
+                    }
                     break;
-                case "Bubur Ayam Barito": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.buburab);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.buburab1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.buburabplace);
-                        break;
-                }
+                case "Bubur Ayam Barito":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.buburab);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.buburab1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.buburabplace);
+                            break;
+                    }
                     break;
-                case "Nasi Goreng Kambing Kebon Sirih": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.ngkks);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.ngkks1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.ngkksplace);
-                        break;
-                }
+                case "Nasi Goreng Kambing Kebon Sirih":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.ngkks);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.ngkks1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.ngkksplace);
+                            break;
+                    }
                     break;
-                case "Gulai Tikungan": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.gultik);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.gultik1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.gultikplace);
-                        break;
-                }
+                case "Gulai Tikungan":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.gultik);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.gultik1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.gultikplace);
+                            break;
+                    }
                     break;
-                case "Indomie Goreng Abang Adek": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.miead);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.miead1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.mieadplace);
-                        break;
-                }
+                case "Indomie Goreng Abang Adek":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.miead);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.miead1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.mieadplace);
+                            break;
+                    }
                     break;
-                case "Sate Taichan Senayan": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.taican);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.taican1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.taicanplace1);
-                        break;
-                }
+                case "Sate Taichan Senayan":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.taican);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.taican1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.taicanplace1);
+                            break;
+                    }
             }
 
             sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -148,6 +150,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
 
         }
     }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -162,14 +165,14 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://quiet-meadow-14635.herokuapp.com/WisataKuliner";
-        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null ,new Response.Listener<JSONArray>() {
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 //                nC1.setSnippet(response.toString());
-                for(int i = 0;i<response.length();i++){
+                for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject data = response.getJSONObject(i);
-                        switch (data.getString("nama")){
+                        switch (data.getString("nama")) {
                             case "Bandar Djakarta":
                                 nL1.setSnippet(data.getString("deskripsi"));
                                 break;
@@ -190,7 +193,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
                                 break;
                         }
 
-                    }catch (JSONException e){
+                    } catch (JSONException e) {
                         //TODO : JSON ERROR
                     }
                 }
@@ -199,7 +202,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
             @Override
             public void onErrorResponse(VolleyError error) {
                 // TODO: Handle error
-                Log.e("err",error.toString());
+                Log.e("err", error.toString());
             }
         });
 
@@ -215,7 +218,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL2 = mMap.addMarker(new MarkerOptions()
                 .position(L2)
                 .title("Bubur Ayam Barito")
-                );
+        );
         nL2.setTag(R.drawable.buburab);
         nL2.setTag(R.drawable.buburab1);
 
@@ -223,7 +226,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL3 = mMap.addMarker(new MarkerOptions()
                 .position(L3)
                 .title("Nasi Goreng Kambing Kebon Sirih")
-                );
+        );
         nL3.setTag(R.drawable.ngkks1);
         nL3.setTag(R.drawable.ngkks);
         nL3.setTag(R.drawable.ngkksplace);
@@ -232,7 +235,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL4 = mMap.addMarker(new MarkerOptions()
                 .position(L4)
                 .title("Gulai Tikungan ")
-                );
+        );
         nL4.setTag(R.drawable.gultik);
         nL4.setTag(R.drawable.gultik1);
         nL4.setTag(R.drawable.gultikplace);
@@ -241,7 +244,7 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL5 = mMap.addMarker(new MarkerOptions()
                 .position(L5)
                 .title("Indomie Goreng Abang Adek")
-                );
+        );
         nL5.setTag(R.drawable.miead);
         nL5.setTag(R.drawable.miead1);
 
@@ -249,13 +252,13 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         nL6 = mMap.addMarker(new MarkerOptions()
                 .position(L6)
                 .title("Sate Taichan Senayan")
-                );
+        );
         nL6.setTag(R.drawable.taican);
         nL6.setTag(R.drawable.taican1);
 
 
         mMap.addMarker(new MarkerOptions().position(L1).title("Wisata Kuliner"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(L1,14));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(L1, 14));
         mMap.setOnMarkerClickListener(this);
     }
 
@@ -292,7 +295,6 @@ public class Wisatakuliner extends FragmentActivity implements OnMapReadyCallbac
         TextView txtLoc = view.findViewById(R.id.txtLoc);
         txtLoc.setText(location);
         setSliderView(title);
-
         builder.setView(view);
 
         // add a button

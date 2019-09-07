@@ -31,7 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class WisataBelanja extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
+public class WisataBelanja extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
 
@@ -61,76 +61,82 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
-    private void setSliderView(String title){
+    private void setSliderView(String title) {
         for (int i = 0; i <= 2; i++) {
 
             DefaultSliderView sliderView = new DefaultSliderView(this);
 
-            switch (title){
-                case "Kota Kosablanka": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.kokas);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.kokas1);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.kokas2);
-                        break;
-                }
-                break;
-                case "Grand Indonesia": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.gi2);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.gi4);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.gidalam);
-                        break;
-                }
-                break;
-                case "Pejaten Village": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.pv2);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.pv);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.pv1);
-                }
-                break;
-                case "Thamrin City": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.thamrincity1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.thamcity);
-                        break;
-                }
-                break;
-                case "Pusat Grosir Cililitan": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.pgc);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.pgc1);
-                        break;
-                }
-                break;
-                case "Pasar Tanah Abang": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.tnhabang2);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.tnhabang);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.tnhabangdlm);
-                        break;
-                }
+            switch (title) {
+                case "Kota Kosablanka":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.kokas);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.kokas1);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.kokas2);
+                            break;
+                    }
+                    break;
+                case "Grand Indonesia":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.gi2);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.gi4);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.gidalam);
+                            break;
+                    }
+                    break;
+                case "Pejaten Village":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.pv2);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.pv);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.pv1);
+                    }
+                    break;
+                case "Thamrin City":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.thamrincity1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.thamcity);
+                            break;
+                    }
+                    break;
+                case "Pusat Grosir Cililitan":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.pgc);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.pgc1);
+                            break;
+                    }
+                    break;
+                case "Pasar Tanah Abang":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.tnhabang2);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.tnhabang);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.tnhabangdlm);
+                            break;
+                    }
             }
 
             sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -144,14 +150,14 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://quiet-meadow-14635.herokuapp.com/WisataBelanja";
-        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null ,new Response.Listener<JSONArray>() {
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 //                nC1.setSnippet(response.toString());
-                for(int i = 0;i<response.length();i++){
+                for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject data = response.getJSONObject(i);
-                        switch (data.getString("nama")){
+                        switch (data.getString("nama")) {
                             case "Kota Kasablanka":
                                 nT1.setSnippet(data.getString("deskripsi"));
                                 break;
@@ -172,7 +178,7 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
                                 break;
                         }
 
-                    }catch (JSONException e){
+                    } catch (JSONException e) {
                         //TODO : JSON ERROR
                     }
                 }
@@ -181,7 +187,7 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
             @Override
             public void onErrorResponse(VolleyError error) {
                 // TODO: Handle error
-                Log.e("err",error.toString());
+                Log.e("err", error.toString());
             }
         });
 

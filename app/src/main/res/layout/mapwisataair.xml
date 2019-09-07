@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#dc14">
+    android:background="#dc14"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,15 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="230dp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/t"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:text="TITLE" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,5 +38,14 @@
         </RelativeLayout>
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/t"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:text="TITLE" />
 
 </LinearLayout>

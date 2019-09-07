@@ -32,16 +32,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
+public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
 
-    private static final LatLng P1 = new LatLng (-6.125194, 106.832444);
-    private static final LatLng P2 = new LatLng (-6.189989, 106.838902);
-    private static final LatLng P3 = new LatLng (-6.307834, 106.820412);
-    private static final LatLng P4 = new LatLng (-6.175419, 106.827066);
-    private static final LatLng P5 = new LatLng (-6.170181, 106.831384);
-    private static final LatLng P6 = new LatLng (-6.125971, 106.842911);
+    private static final LatLng P1 = new LatLng(-6.125194, 106.832444);
+    private static final LatLng P2 = new LatLng(-6.189989, 106.838902);
+    private static final LatLng P3 = new LatLng(-6.307834, 106.820412);
+    private static final LatLng P4 = new LatLng(-6.175419, 106.827066);
+    private static final LatLng P5 = new LatLng(-6.170181, 106.831384);
+    private static final LatLng P6 = new LatLng(-6.125971, 106.842911);
 
     private Marker nP1;
     private Marker nP2;
@@ -62,81 +62,87 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
-    private void setSliderView(String title){
+    private void setSliderView(String title) {
         for (int i = 0; i <= 2; i++) {
 
             DefaultSliderView sliderView = new DefaultSliderView(this);
 
-            switch (title){
-                case "Dunia Fantasi": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.dufan2);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.dufan3);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.dufankartun);
-                        break;
-                }
+            switch (title) {
+                case "Dunia Fantasi":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.dufan2);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.dufan3);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.dufankartun);
+                            break;
+                    }
                     break;
-                case "Planetarium": switch (i) {
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.planetdlm1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.planet);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.planetdlm);
-                }
+                case "Planetarium":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.planetdlm1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.planet);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.planetdlm);
+                    }
                     break;
-                case "Kebun Binatang Ragunan": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.ragunan);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.primata);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.spesieskbr);
-                        break;
-                }
+                case "Kebun Binatang Ragunan":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.ragunan);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.primata);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.spesieskbr);
+                            break;
+                    }
                     break;
-                case "Monumen Nasional": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.monas1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.monas2);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.monas3);
-                        break;
-                }
+                case "Monumen Nasional":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.monas1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.monas2);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.monas3);
+                            break;
+                    }
                     break;
-                case "Masjid Istiqlal": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.istiqlal1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.dlmiqtiqlal);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.luasistiqlal);
-                        break;
-                }
+                case "Masjid Istiqlal":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.istiqlal1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.dlmiqtiqlal);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.luasistiqlal);
+                            break;
+                    }
                     break;
-                case "Seaworld Ancol": switch (i){
-                    case 0:
-                        sliderView.setImageDrawable(R.drawable.seaworld1);
-                        break;
-                    case 1:
-                        sliderView.setImageDrawable(R.drawable.seaworld2);
-                        break;
-                    case 2:
-                        sliderView.setImageDrawable(R.drawable.seaworldshark);
-                }
+                case "Seaworld Ancol":
+                    switch (i) {
+                        case 0:
+                            sliderView.setImageDrawable(R.drawable.seaworld1);
+                            break;
+                        case 1:
+                            sliderView.setImageDrawable(R.drawable.seaworld2);
+                            break;
+                        case 2:
+                            sliderView.setImageDrawable(R.drawable.seaworldshark);
+                    }
 
             }
 
@@ -160,14 +166,14 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://quiet-meadow-14635.herokuapp.com/WisataHiburanEdukasi";
-        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null ,new Response.Listener<JSONArray>() {
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 //                nC1.setSnippet(response.toString());
-                for(int i = 0;i<response.length();i++){
+                for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject data = response.getJSONObject(i);
-                        switch (data.getString("nama")){
+                        switch (data.getString("nama")) {
                             case "Dunia Fantasi":
                                 nP1.setSnippet(data.getString("deskripsi"));
                                 break;
@@ -188,7 +194,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
                                 break;
                         }
 
-                    }catch (JSONException e){
+                    } catch (JSONException e) {
                         //TODO : JSON ERROR
                     }
                 }
@@ -197,7 +203,7 @@ public class WisataEdukasi extends FragmentActivity implements OnMapReadyCallbac
             @Override
             public void onErrorResponse(VolleyError error) {
                 // TODO: Handle error
-                Log.e("err",error.toString());
+                Log.e("err", error.toString());
             }
         });
 
