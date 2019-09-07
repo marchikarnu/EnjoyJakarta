@@ -1,6 +1,7 @@
 package com.marchika.enjoyjakarte;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -126,7 +127,7 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback, G
         mMap = googleMap;
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://quiet-meadow-14635.herokuapp.com/WisataAir";
+        String url = "https://enjoyjakarte.now.sh/WisataAir";
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -218,8 +219,10 @@ public class WisataAir extends FragmentActivity implements OnMapReadyCallback, G
 
         TextView txtTitle = view.findViewById(R.id.t);
         txtTitle.setText(title);
+        txtTitle.setTextColor(Color.BLACK);
         TextView txtLoc = view.findViewById(R.id.tx);
         txtLoc.setText(location);
+        txtLoc.setTextColor(Color.BLACK);
 
         setSliderView(title);
 

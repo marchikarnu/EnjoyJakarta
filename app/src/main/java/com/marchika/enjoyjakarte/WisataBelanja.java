@@ -1,6 +1,7 @@
 package com.marchika.enjoyjakarte;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -149,7 +150,7 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://quiet-meadow-14635.herokuapp.com/WisataBelanja";
+        String url = "https://enjoyjakarte.now.sh/WisataBelanja";
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -258,9 +259,11 @@ public class WisataBelanja extends FragmentActivity implements OnMapReadyCallbac
 
         TextView txtTitle = view.findViewById(R.id.txtTitleMb);
         txtTitle.setText(title);
+        txtTitle.setTextColor(Color.BLACK);
 
         TextView txtLoc = view.findViewById(R.id.txtLocMb);
         txtLoc.setText(location);
+        txtLoc.setTextColor(Color.BLACK);
 
         setSliderView(title);
 

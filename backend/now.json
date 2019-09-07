@@ -1,0 +1,25 @@
+{
+	"version": 2,
+	"builds": [
+		{ "src": "*.js", "use": "@now/node-server"}],
+	"routes": [{
+      	"src": "/WisataKuliner",
+      	"dest": "/index.js",
+      	"methods": ["GET"]
+    	},
+    	{
+      	"src": "/WisataBelanja",
+      	"dest": "/index.js",
+      	"methods": ["GET"]
+    	},
+	{
+	"src": "/WisataHiburanEdukasi",
+	"dest": "/index.js",
+	"methods": ["GET"]
+	},
+	{
+        "src": "/WisataAir",
+        "dest": "/index.js", 
+        "methods": ["GET"]
+        }]
+}
